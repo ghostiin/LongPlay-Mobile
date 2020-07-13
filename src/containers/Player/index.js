@@ -10,11 +10,10 @@ import Playlist from '../../components/Playlist';
 import { useFormatTime, usePrevious } from '../../hooks';
 import { getSongUrl } from '../../api/requests';
 import { PlayerWrapper, PlayerBar, PlayControl, ProgressBarWrapper } from './style';
-import default80 from './default80.svg';
 import style from '../../theme';
+import MiniPlayer from './miniPlayer';
 
 const Player = () => {
-	const playerRef = useRef(null);
 	const loaded = useRef();
 	const audioRef = useRef();
 	const { playing, playList, defaultList, mode, currentIdx, currentSong } = useSelector((state) => state.player);
@@ -211,112 +210,19 @@ const Player = () => {
 	};
 	return (
 		<React.Fragment>
-			<PlayerWrapper>
-				<audio ref={audioRef} onTimeUpdate={updateCurrentTime} onEnded={onPlayEnd} onError={onErr} />
-				<PlayerBar ref={playerRef}>
-					<PlayControl>
-						<div className='info'>
-							<img
-								src={
-									!_.isEmpty(currentSong) && currentSong.al ? (
-										`${currentSong.al.picUrl}?param=310x310`
-									) : (
-										default80
-									)
-								}
-								alt='cover'
-								width='80'
-								height='80'
-							/>
-							<Marquee style={{ minWidth: '30%' }}>
-								{!_.isEmpty(currentSong) && currentSong.name ? (
-									currentSong.name
-								) : (
-									'Good Music To Bad Days'
-								)}
-							</Marquee>
-							<Marquee>
-								{!_.isEmpty(currentSong) && currentSong.ar ? getAllAr(currentSong.ar) : 'Play now'}
-							</Marquee>
-						</div>
-						<div className='control'>
-							<div className='control-btn'>
-								<i
-									className='iconfont shuffle'
-									style={mode.shuffle === true ? { color: style.mainColor } : {}}
-									onClick={shuffleMode}
-									aria-hidden
-								>
-									&#xe619;
-								</i>
-								<i className='iconfont prev' onClick={playPrev} aria-hidden>
-									&#xed09;
-								</i>
-								{playing ? (
-									<i className='iconfont pause center' onClick={togglePlay} aria-hidden>
-										&#xe755;
-									</i>
-								) : (
-									<i className='iconfont play center' onClick={togglePlay} aria-hidden>
-										&#xe600;
-									</i>
-								)}
-
-								<i className='iconfont next' onClick={playNext} aria-hidden>
-									&#xe6d2;
-								</i>
-								{mode.repeat && (
-									<i
-										className='iconfont repeat'
-										style={{ color: style.mainColor }}
-										aria-hidden
-										onClick={repeatMode}
-									>
-										&#xe714;
-									</i>
-								)}
-								{mode.loop ? (
-									<i
-										className='iconfont looplist'
-										style={{ color: style.mainColor }}
-										aria-hidden
-										onClick={loopMode}
-									>
-										&#xe713;
-									</i>
-								) : (
-									!mode.repeat && (
-										<i className='iconfont looplist' aria-hidden onClick={loopMode}>
-											&#xe713;
-										</i>
-									)
-								)}
-							</div>
-
-							<ProgressBarWrapper>
-								<span className='time time-l'>{useFormatTime(currentTime)}</span>
-								<div className='progressbar'>
-									<ProgressBar percent={percent} changePercent={onPrecentChange} />
-								</div>
-								<div className='time time-r'>{useFormatTime(duration)}</div>
-							</ProgressBarWrapper>
-						</div>
-						<div className='func'>
-							<Playlist
-								relativeRef={playerRef}
-								prevAlbum={prevAlbum}
-								nextAlbum={nextAlbum}
-								playlist={playList}
-								currentIdx={currentIdx}
-								setCurrentIdx={(id) => {
-									dispatch(actionTypes.setCurrentIdx(id));
-								}}
-							/>
-							<Playbox relativeRef={playerRef} />
-						</div>
-					</PlayControl>
-				</PlayerBar>
-			</PlayerWrapper>
+			<audio ref={audioRef} onTimeUpdate={updateCurrentTime} onEnded={onPlayEnd} onError={onErr} />
+			<MiniPlayer
+				playing={playing}
+				currentIdx={currentIdx}
+				currentSong={currentSong}
+				boxAlbumsList={boxAlbumsList}
+				boxAlbumsId={boxAlbumsId}
+				currentTime={currentTime}
+				duration={duration}
+				percent={percent}
+				togglePlay={togglePlay}
+				onPrecentChange={onPrecentChange}
+			/>
 		</React.Fragment>
 	);
 };

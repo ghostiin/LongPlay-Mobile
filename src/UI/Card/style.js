@@ -3,40 +3,35 @@ import style from '../../theme';
 
 const CardWrapper = styled.div`
 	/* nearly 1500px */
-	perspective: 94rem;
-	position: relative;
-	width: 22rem;
-	height: 30rem;
+	perspective: 500vw;
+	width: 80vw;
+	height: 107vw;
 
-	.side {
-		background-color: ${style.darkColor};
-		border-radius: 1rem;
-
-		transition: all 1s ease;
-		position: absolute;
-		top: 0;
-		left: 0;
+	.card {
 		width: 100%;
 		height: 100%;
-		backface-visibility: hidden;
+		position: relative;
+		transition: transform 1s;
+		transform-style: preserve-3d;
 		box-shadow: ${style.boxShadow};
+		background-color: ${style.darkColor};
+		border-radius: 20px;
 
-		&--front {
-			/* front style */
-		}
+		&-side {
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			backface-visibility: hidden;
 
-		&--back {
-			transform: rotateY(180deg);
+			&-back {
+				transform: rotateY(180deg);
+			}
 		}
 	}
 
-	/* PC端效果：hover时翻转 */
-	&:hover .side--front {
+	/* mobile端效果：点击时翻转 */
+	.is-fliped {
 		transform: rotateY(180deg);
-	}
-
-	&:hover .side--back {
-		transform: rotateY(0deg);
 	}
 `;
 

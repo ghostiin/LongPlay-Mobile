@@ -5,13 +5,23 @@ const Wrapper = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 1.5rem 0;
 	font-family: ${style.sansFont};
 	color: ${style.textColor};
+	position: fixed;
+	top: 103px;
+	bottom: 60px;
+	width: 100%;
 `;
 
-const Content = styled.div`${style.scrollHContent};`;
+const Content = styled.div`
+	width: 80vw;
+	margin: 0 auto;
+`;
 
-const Item = styled.div`padding: 3rem;`;
+const Item = styled.div`
+	height: 117vw;
+	margin: 10px 0;
+	padding-top: 20px;
+`;
 
 export { Wrapper, Content, Item };

@@ -12,6 +12,7 @@ import volData from '../../api/mockData';
 function Vol({ volData }) {
 	const dispatch = useDispatch();
 	const { boxAlbumsList } = useSelector((state) => state.box);
+
 	const renderList = () => {
 		return volData.map((vol) => {
 			const { name: cardName, artist, volDescription: description, picUrl: imgUrl } = vol;
@@ -38,7 +39,7 @@ function Vol({ volData }) {
 
 	return (
 		<Wrapper>
-			<Scroll direction='horizontal'>
+			<Scroll>
 				<Content>{renderList()}</Content>
 			</Scroll>
 		</Wrapper>

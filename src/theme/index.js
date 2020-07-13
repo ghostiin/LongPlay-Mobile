@@ -2,6 +2,18 @@ import 'typeface-libre-barcode-39-text'; // 引入本地字体
 import 'typeface-lora';
 import 'typeface-poppins';
 
+// 扩大点击范围 !1CE
+const extendClick = () => {
+	return `
+	  position: relative;
+	  &:before {
+		content: '';
+		position: absolute;
+		top: -10px; bottom: -10px; left: -10px; right: -10px;
+	  };
+	`;
+};
+
 // 一行显示不下则省略号
 const noWrap = () => `
       text-overflow: ellipsis;
@@ -44,5 +56,6 @@ export default {
 	noWrap,
 	moreWrap,
 	overflowWrap,
-	scrollHContent
+	scrollHContent,
+	extendClick
 };

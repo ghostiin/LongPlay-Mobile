@@ -2,28 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import LazyLoad from 'react-lazyload';
 import Card from '../../UI/Card';
-import Scroll from '../../UI/Scroll';
 import Button from '../../UI/Button';
 import style from '../../theme';
 import Marquee from '../../UI/Marquee';
 import defaultImg from './defaultCover.svg';
-import { CoverImg, CardInfo, CardDescription, CardAction, Nameplate } from './style';
+import { CoverImg, CardInfo, CardDescription, CardAction, CardInfoHeader } from './style';
 
 const VolCard = (props) => {
 	const { imgUrl, cardCatgory, cardName, singerName, description } = props;
 	const { playNow, collect, collected } = props;
 	return (
 		<Card>
-			<div className='side side--front'>
+			<div>
 				<CoverImg>
-					<LazyLoad placeholder={<img src={defaultImg} alt='cover' />}>
-						<img src={`${imgUrl}?param=360x360`} alt='cover' />
-					</LazyLoad>
+					<img src={`${imgUrl}?param=400x400`} alt='cover' />
 				</CoverImg>
 				<CardInfo>
 					<div className='category'>{cardCatgory}</div>
-
-					<Marquee className='name' style={{ fontSize: '1.8rem', fontWeight: '600' }}>
+					<Marquee className='name' style={{ fontSize: '30px', fontWeight: '600' }}>
 						{cardName}
 					</Marquee>
 
@@ -33,47 +29,49 @@ const VolCard = (props) => {
 					</div>
 				</CardInfo>
 			</div>
-			<div className='side side--back'>
-				<CardInfo small>
-					<LazyLoad placeholder={<img src={defaultImg} alt='cover' />}>
-						<img src={`${imgUrl}?param=360x360`} alt='cover' />
-					</LazyLoad>
+			<div>
+				<CardInfoHeader>
+					<img src={`${imgUrl}?param=400x400`} alt='cover' className='cover' />
+
 					<div className='right'>
-						<div className='category'>{cardCatgory}</div>
-						<Marquee className='name' style={{ fontSize: '1.2rem', fontWeight: '600', width: '12rem' }}>
-							{cardName}
-						</Marquee>
-						<div className='singer'>
-							<span>By</span>
-							{singerName}
+						<div className='right-inner'>
+							<div className='category'>{cardCatgory}</div>
+							<Marquee className='name' style={{ fontSize: '20px', fontWeight: '600' }}>
+								{cardName}
+							</Marquee>
+							<div className='singer'>
+								<span>By</span>
+								{singerName}
+							</div>
 						</div>
 					</div>
-				</CardInfo>
+				</CardInfoHeader>
 				<CardDescription>
-					<Scroll>
-						<div className='content'>
-							<div className='text'>{description}</div>
-						</div>
-					</Scroll>
+					<div className='content'>
+						<div className='text'>{description}</div>
+					</div>
 				</CardDescription>
 				<CardAction>
-					<Button onPropsClick={playNow} aria-hidden>
-						<i className='iconfont'>&#xe9f9;</i>
-						Play Now
-					</Button>
-					{collected ? (
-						<Button outlined outlinedColor={style.mainColor}>
-							<i className='iconfont'>&#xe618;</i>
-							In Box!
+					<div onClick={(e) => e.stopPropagation()} aria-hidden className='card-btn'>
+						<Button onPropsClick={playNow} aria-hidden>
+							<i className='iconfont'>&#xe9f9;</i>
+							Play Now
 						</Button>
-					) : (
-						<Button onPropsClick={collect} outlined outlinedColor={style.mainColor}>
-							<i className='iconfont'>&#xe69f;</i>
-							Collect
-						</Button>
-					)}
+					</div>
+					<div onClick={(e) => e.stopPropagation()} aria-hidden className='card-btn'>
+						{collected ? (
+							<Button outlined outlinedColor={style.mainColor}>
+								<i className='iconfont'>&#xe618;</i>
+								In Box!
+							</Button>
+						) : (
+							<Button onPropsClick={collect} outlined outlinedColor={style.mainColor}>
+								<i className='iconfont'>&#xe69f;</i>
+								Collect
+							</Button>
+						)}
+					</div>
 				</CardAction>
-				<Nameplate>{singerName}</Nameplate>
 			</div>
 		</Card>
 	);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import CardWrapper from './style';
 
@@ -10,7 +10,19 @@ import CardWrapper from './style';
 
 const Card = (props) => {
 	const { children } = props;
-	return <CardWrapper>{children}</CardWrapper>;
+	const cardRef = useRef();
+
+	const filpCard = () => {
+		cardRef.current.classList.toggle('is-fliped');
+	};
+	return (
+		<CardWrapper>
+			<div className='card' ref={cardRef} onClick={filpCard} aria-hidden>
+				<div className='card-side card-side-front'>{children[0]}</div>
+				<div className='card-side card-side-back'>{children[1]}</div>
+			</div>
+		</CardWrapper>
+	);
 };
 
 Card.propTypes = {

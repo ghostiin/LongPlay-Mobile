@@ -5,14 +5,14 @@ const BaseButton = styled.button`
 	cursor: pointer;
 	display: inline-block;
 	border: none;
-	border-radius: 2rem;
+	border-radius: 20px;
 	font-size: ${({ fontSize }) => fontSize};
 	font-family: ${style.sansFont};
-	letter-spacing: 0.1rem;
-	padding: 0.5rem 1rem;
+
+	padding: 5px 10px;
 	color: ${({ fontColor }) => fontColor};
 	background-color: ${({ outlined, bgColor }) => (!outlined ? bgColor : 'transparent')};
-	border: solid 0.1rem ${({ outlined, outlinedColor }) => (outlined ? outlinedColor : 'transparent')};
+	border: solid 2px ${({ outlined, outlinedColor }) => (outlined ? outlinedColor : 'transparent')};
 
 	transition: all .2s;
 

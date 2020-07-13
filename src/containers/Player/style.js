@@ -3,9 +3,9 @@ import style from '../../theme';
 
 const PlayerWrapper = styled.div`
 	width: 100vw;
-	height: minmax(6rem, 10vh);
+	height: 60px;
 	position: fixed;
-	bottom: 1rem;
+	bottom: 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -14,10 +14,9 @@ const PlayerWrapper = styled.div`
 `;
 
 const PlayerBar = styled.div`
-	width: 80%;
+	width: 100%;
 	height: 100%;
 	background-color: ${style.darkColor};
-	border-radius: 1.5rem;
 `;
 const PlayControl = styled.div`
 	width: 100%;

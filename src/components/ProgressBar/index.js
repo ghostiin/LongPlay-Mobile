@@ -6,9 +6,9 @@ import style from '../../theme';
 const Wrapper = styled.div`
 	height: 3px;
 	width: 100%;
-	background-color: ${style.subColor};
+	background-color: ${style.mainColor};
 	position: relative;
-	cursor: pointer;
+
 	.innerbar {
 		width: 0;
 		height: 100%;

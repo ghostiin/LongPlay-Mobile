@@ -1,7 +1,10 @@
 import styled from 'styled-components/macro';
 import dynamicMarqueeAnimation from '../../theme/animations';
 
-const Wrapper = styled.div`overflow: hidden;`;
+const Wrapper = styled.div`
+	width: 100%;
+	overflow: hidden;
+`;
 
 const TextWrapper = styled.div`
 	white-space: nowrap;

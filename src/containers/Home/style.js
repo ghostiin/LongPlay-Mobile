@@ -3,61 +3,42 @@ import style from '../../theme';
 
 // 设置全屏背景色
 const Wrapper = styled.div`
-	.home-btn {
-		display: inline-block;
-		margin: 0 0.5rem;
-		vertical-align: middle;
-		cursor: pointer;
-		transition: all .2s;
-		&:hover {
-			transform: scale(1.1);
-		}
-		&:active {
-			opacity: 0.5;
-			transform: scale(0.9);
-		}
-		.iconfont {
-			font-size: 2.5rem;
-		}
-	}
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 100%;
 `;
 
 const Header = styled.div`
 	display: flex;
-
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 5px 10px;
 	color: ${style.textColor};
-	.center {
-		flex: 1;
-		text-align: center;
-		padding: 3rem 0 1rem 0;
+	background-color: ${style.mainColor};
+	font-size: 20px;
+	.logo-title {
+		font-family: ${style.logoFont};
 	}
-	.left,
-	.right {
-		padding: 4rem 0;
-	}
-	.left {
-		padding-left: 4rem;
-	}
-	.right {
-		padding-right: 4rem;
-	}
-`;
-const Logo = styled.span`
-	font-size: ${({ tablet }) => (tablet ? '3rem' : '5rem')};
-	font-family: ${style.logoFont};
 
-	span {
-		font-family: ${style.specialFont};
-		font-size: 1rem;
-		display: block;
-		transform: translate(8rem, -1.5rem);
+	& > span {
+		line-height: 40px;
+
+		&.iconfont {
+			font-size: 25px;
+		}
 	}
 `;
 
 const NavBar = styled.div`
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	padding: 5px 10px;
 	text-align: center;
 	color: ${style.textColor};
-	font-size: 1rem;
+	background-color: ${style.mainColor};
+	font-size: 16px;
 	font-family: ${style.sansFont};
 	a {
 		text-decoration: none;
@@ -65,14 +46,16 @@ const NavBar = styled.div`
 		opacity: 0.5;
 	}
 
+	padding-bottom: 30px;
+
 	.selected {
 		position: relative;
 		opacity: 1;
-		font-size: 1.5rem;
+		font-size: 18px;
 		transition: all .4s;
 		&:after {
 			content: '♫';
-			font-size: 1rem;
+			font-size: 16px;
 			color: ${style.textColor};
 			position: absolute;
 			top: 120%;
@@ -82,20 +65,6 @@ const NavBar = styled.div`
 	}
 `;
 
-const NavItem = styled.div`
-	display: inline-block;
-	position: relative;
-	margin-right: 4rem;
+const NavItem = styled.div`display: inline-block;`;
 
-	&:not(:last-child):after {
-		content: "";
-		background-color: ${style.textColor};
-		position: absolute;
-		width: 3rem;
-		height: 1px;
-		left: 125%;
-		top: 50%;
-	}
-`;
-
-export { Wrapper, Header, Logo, NavBar, NavItem };
+export { Wrapper, Header, NavBar, NavItem };

@@ -2,47 +2,60 @@ import { createGlobalStyle } from 'styled-components/macro';
 import style from './index';
 
 const ResetStyle = createGlobalStyle`
-    html {
-    box-sizing: border-box;
-    font-size: 16px;
-    }
+html, body, div, span, applet, object, iframe,
+	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+	a, abbr, acronym, address, big, cite, code,
+	del, dfn, em, img, ins, kbd, q, s, samp,
+	small, strike, strong, sub, sup, tt, var,
+	b, u, i, center,
+	dl, dt, dd, ol, ul, li,
+	fieldset, form, label, legend,
+	table, caption, tbody, tfoot, thead, tr, th, td,
+	article, aside, canvas, details, embed, 
+	figure, figcaption, footer, header, hgroup, 
+	menu, nav, output, ruby, section, summary,
+	time, mark, audio, video {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: baseline;
+		box-sizing:border-box;
+	}
+	/* HTML5 display-role reset for older browsers */
+	article, aside, details, figcaption, figure, 
+	footer, header, hgroup, menu, nav, section {
+		display: block;
+	}
+	body {
+		line-height: 1;
+	}
+
+	ol, ul {
+		list-style: none;
+	}
+	blockquote, q {
+		quotes: none;
+	}
+	blockquote:before, blockquote:after,
+	q:before, q:after {
+		content: '';
+		content: none;
+	}
+	table {
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+	a {
+		text-decoration: none;
+		color: #fff;
+	}
     /* 自定义 */
-    html{
+    html,body{
     background: linear-gradient(${style.bgColorLight}, ${style.bgColorDark}) no-repeat fixed;
     scroll-behavior: smooth;
-    }
-
-    *, *:before, *:after {
-    box-sizing: inherit;
-    }
-
-    body, h1, h2, h3, h4, h5, h6, p, ol, ul {
-    margin: 0;
-    padding: 0;
-    font-weight: normal;
-    overflow:auto;
-    }
-
-    ol, ul {
-    list-style: none;
-    }
-
-    img {
-    max-width: 100%;
-    height: auto;
-    }
-     /* 自定义 */
-    a:link,a:visited {
-        text-decoration:none;
-        color: ${style.textColor};
-    }
-
-    a:hover {
-    text-decoration: none;
-
-    }
-    a:active {
-    text-decoration: none;
+	font-family: ${style.sansFont};
     }
 
     /* playbox */
