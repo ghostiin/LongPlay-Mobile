@@ -102,7 +102,11 @@ const Player = () => {
 	};
 	const onPlayEnd = () => {
 		if (mode.zen) {
-			nextAlbum();
+			if (currentIdx + 1 === playList.length) {
+				nextAlbum();
+			} else {
+				playNext();
+			}
 			return;
 		}
 		if (mode.repeat === true) {
