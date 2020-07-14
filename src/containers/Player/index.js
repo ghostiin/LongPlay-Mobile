@@ -101,13 +101,17 @@ const Player = () => {
 		dispatch(actionTypes.setCurrentIdx(index));
 	};
 	const onPlayEnd = () => {
+		if (mode.zen) {
+			nextAlbum();
+			return;
+		}
 		if (mode.repeat === true) {
 			playRepeat();
-		} else {
-			if (mode.loop === false && currentIdx + 1 === playList.length) {
+		} else if (mode.loop === false) {
+			if (currentIdx + 1 === playList.length) {
 				dispatch(actionTypes.setPlayingState(false));
-				return;
 			}
+		} else {
 			playNext();
 		}
 	};
@@ -184,16 +188,16 @@ const Player = () => {
 	};
 	const repeatMode = () => {
 		if (mode.repeat) {
-			dispatch(actionTypes.setPlayMode({ repeat: false, loop: false }));
+			dispatch(actionTypes.setPlayMode({ repeat: false, loop: false, zen: false }));
 		} else {
-			dispatch(actionTypes.setPlayMode({ repeat: true, loop: true }));
+			dispatch(actionTypes.setPlayMode({ repeat: true, loop: true, zen: false }));
 		}
 	};
 	const loopMode = () => {
 		if (mode.loop) {
-			dispatch(actionTypes.setPlayMode({ repeat: true, loop: false }));
+			dispatch(actionTypes.setPlayMode({ repeat: true, loop: false, zen: false }));
 		} else {
-			dispatch(actionTypes.setPlayMode({ repeat: false, loop: true }));
+			dispatch(actionTypes.setPlayMode({ repeat: false, loop: true, zen: false }));
 		}
 	};
 
@@ -201,7 +205,7 @@ const Player = () => {
 		if (!mode.zen) {
 			dispatch(actionTypes.setPlayMode({ zen: true, loop: false, repeat: false }));
 		} else {
-			dispatch(actionTypes.setPlayMode({ zen: false, loop: true }));
+			dispatch(actionTypes.setPlayMode({ zen: false, loop: false, repeat: false }));
 		}
 	};
 

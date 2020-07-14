@@ -137,6 +137,8 @@ const ZenPlayer = ({
 				<span
 					className='iconfont zenmode'
 					style={mode.zen === true ? { color: style.textColor } : { color: style.subColor }}
+					aria-hidden
+					onClick={zenMode}
 				>
 					&#xe6ed;
 				</span>

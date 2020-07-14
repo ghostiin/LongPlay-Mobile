@@ -48,16 +48,14 @@ const Playbox = () => {
 	};
 	return (
 		<Wrapper>
+			<div className='header'>
+				<div>PlayBox</div>
+				<div className='iconfont' onClick={back} aria-hidden>
+					&#xe69e;
+				</div>
+			</div>
 			<Scroll>
-				<Content>
-					<div className='header'>
-						<div>PlayBox</div>
-						<div className='iconfont' onClick={back} aria-hidden>
-							&#xe69e;
-						</div>
-					</div>
-					{renderList(boxAlbumsId, boxAlbumsList)}
-				</Content>
+				<Content>{renderList(boxAlbumsId, boxAlbumsList)}</Content>
 			</Scroll>
 		</Wrapper>
 	);

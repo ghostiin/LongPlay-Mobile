@@ -11,6 +11,18 @@ const Wrapper = styled.div`
 	top: 0;
 
 	font-family: ${style.sansFont};
+	.header {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		font-family: ${style.sansFont};
+		font-weight: 700;
+		font-size: 30px;
+		padding: 20px;
+		.iconfont {
+			font-size: 30px;
+		}
+	}
 `;
 const Content = styled.div`
 	/* itemNum*itemWidth+(itemNum-1)*gapWidth */
@@ -18,19 +30,6 @@ const Content = styled.div`
 	/* to-do:responsively change padding */
 	padding: 5vw;
 
-	.header {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-
-		font-family: ${style.sansFont};
-		font-weight: 700;
-		font-size: 30px;
-
-		.iconfont {
-			font-size: 30px;
-		}
-	}
 	padding-bottom: 63px;
 `;
 const GridItem = styled.div`
