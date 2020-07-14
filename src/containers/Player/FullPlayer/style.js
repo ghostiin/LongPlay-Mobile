@@ -20,8 +20,8 @@ const Header = styled.div`
 
 	font-size: 20px;
 	.logo-title {
-		font-family: ${style.logoFont};
-		font-size: 25px;
+		
+		font-size: 16px;
 	}
 
 	& > span {
@@ -36,7 +36,7 @@ const Cover = styled.div`
 	width: 100vw;
 	img {
 		display: block;
-		margin: 30px auto;
+		margin: 10px auto;
 		box-shadow: ${style.boxShadow};
 	}
 `;
@@ -63,7 +63,7 @@ const Item = styled.div`
 
 const ProgressBarWrapper = styled.div`
 	font-size: 12px;
-	padding: 20px;
+	padding:0  20px;
 	.below-bar {
 		margin-top: 10px;
 
@@ -75,7 +75,7 @@ const ProgressBarWrapper = styled.div`
 
 const Info = styled.div`
 	padding: 0 20px;
-	line-height: 40px;
+	line-height: 30px;
 
 	.name {
 		font-size: 20px;

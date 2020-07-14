@@ -18,7 +18,7 @@ const Header = styled.div`
 	background-color: ${style.mainColor};
 	font-size: 20px;
 	.logo-title {
-		font-family: ${style.logoFont};
+		
 		font-size: 16px;
 	}
 
@@ -47,19 +47,19 @@ const NavBar = styled.div`
 		opacity: 0.5;
 	}
 
-	padding-bottom: 30px;
+	padding-bottom: 20px;
 
 	.selected {
 		position: relative;
 		opacity: 1;
-		font-size: 18px;
+		font-size: 16px;
 		transition: all .4s;
 		&:after {
 			content: '♫';
-			font-size: 16px;
+			font-size: 10px;
 			color: ${style.textColor};
 			position: absolute;
-			top: 120%;
+			top: 100%;
 			left: 50%;
 			transform: translateX(-50%);
 		}

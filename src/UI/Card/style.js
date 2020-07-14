@@ -4,33 +4,36 @@ import style from '../../theme';
 const CardWrapper = styled.div`
 	/* nearly 1500px */
 	perspective: 500vw;
+	position: relative;
 	width: 80vw;
 	height: 107vw;
-
-	.card {
-		width: 100%;
-		height: 100%;
-		position: relative;
-		transition: transform 1s;
-		transform-style: preserve-3d;
+	
+	.card-side {
+		background-color: ${style.darkColor};
+		transition: all 1s ease;
 		box-shadow: ${style.boxShadow};
 		background-color: ${style.darkColor};
 		border-radius: 20px;
-
-		&-side {
-			position: absolute;
-			height: 100%;
-			width: 100%;
-			backface-visibility: hidden;
-
-			&-back {
-				transform: rotateY(180deg);
-			}
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		backface-visibility: hidden;
+		
+		&-front {
+			
+		}
+		&-back {
+			
+			
 		}
 	}
+	
 
 	/* mobile端效果：点击时翻转 */
-	.is-fliped {
+	.is-fliped-front {
+		transform: rotateY(180deg);
+	}
+	.is-fliped-back {
 		transform: rotateY(180deg);
 	}
 `;

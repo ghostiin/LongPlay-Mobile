@@ -27,7 +27,7 @@ const volAlbum1 = {
 		musicSize: 257,
 		topicPerson: 0,
 		picId_str: '109951163290514920',
-		transNames: [ '北极猴乐队' ],
+		transNames: ['北极猴乐队'],
 		img1v1Id_str: '18686200114669622',
 		alia: []
 	},
@@ -60,7 +60,7 @@ const volAlbum1 = {
 	mark: 0,
 	containedSong: '',
 	volDescription:
-		'你可以永远相信北极猴子🐒的音乐品味!这是张耐听的专辑,乐队创作的迷人旋律和主唱Alex Turner通过敏锐观察生活得到的诗意歌词都值得反复品味.从摇滚乐到悦耳的独立民谣旋律,从牛仔电影到对浪漫的观察,适合在旷野的大太阳下开车时听😋🚗'
+		'你可以永远相信北极猴子🐒的音乐品味!这是张耐听的专辑,乐队创作的迷人旋律和主唱Alex Turner通过敏锐观察生活得到的诗意歌词都值得反复品味.从摇滚乐到悦耳的独立民谣旋律,从牛仔电影到对浪漫的观察,适合在旷野的烈日下开车时听'
 };
 
 const vol2 = {
@@ -212,13 +212,13 @@ const vol4 = {
 		picUrl: 'http://p3.music.126.net/d2qsEkeVBfnBFbv3BvFueA==/109951164853374784.jpg',
 		img1v1Url: 'http://p4.music.126.net/VnZiScyynLG7atLIZ2YPkw==/18686200114669622.jpg',
 		albumSize: 41,
-		alias: [ '杜娃·黎帕' ],
+		alias: ['杜娃·黎帕'],
 		trans: '',
 		musicSize: 128,
 		topicPerson: 0,
 		picId_str: '109951164853374784',
 		img1v1Id_str: '18686200114669622',
-		alia: [ '杜娃·黎帕' ]
+		alia: ['杜娃·黎帕']
 	},
 	songs: null,
 	alias: [],
@@ -276,13 +276,13 @@ const vol5 = {
 		picUrl: 'http://p4.music.126.net/wsMvryRLwHDE4IOd5H488A==/109951163649563304.jpg',
 		img1v1Url: 'http://p3.music.126.net/VnZiScyynLG7atLIZ2YPkw==/18686200114669622.jpg',
 		albumSize: 4,
-		alias: [ 'Peach Illusion' ],
+		alias: ['Peach Illusion'],
 		trans: '',
 		musicSize: 19,
 		topicPerson: 0,
 		picId_str: '109951163649563304',
 		img1v1Id_str: '18686200114669622',
-		alia: [ 'Peach Illusion' ]
+		alia: ['Peach Illusion']
 	},
 	songs: null,
 	alias: [],
@@ -339,14 +339,14 @@ const vol6 = {
 		picUrl: 'http://p3.music.126.net/gsCK7xFhzCkBx-YhdN0m_g==/109951164330942558.jpg',
 		img1v1Url: 'http://p3.music.126.net/VnZiScyynLG7atLIZ2YPkw==/18686200114669622.jpg',
 		albumSize: 82,
-		alias: [ 'Elizabeth Grant' ],
+		alias: ['Elizabeth Grant'],
 		trans: '拉娜·德蕾',
 		musicSize: 1083,
 		topicPerson: 0,
 		picId_str: '109951164330942558',
-		transNames: [ '拉娜·德蕾' ],
+		transNames: ['拉娜·德蕾'],
 		img1v1Id_str: '18686200114669622',
-		alia: [ 'Elizabeth Grant' ]
+		alia: ['Elizabeth Grant']
 	},
 	songs: null,
 	alias: [],
@@ -570,7 +570,7 @@ const vol9 = {
 		'像风轻拂过的旋律🌫却并不是一般的小清新民谣, 诗意的歌词承载了Sufjan Stevens私密的情感记录和对生死等沉重话题的思索 , 内敛而超然的表达让人潸然泪下😭适合在回忆往昔或被生活毒打后听'
 };
 
-const volData = [ volAlbum1, vol2, vol3, vol4, vol5, vol6, vol7, vol8, vol9 ];
+const volData = [volAlbum1, vol2, vol3, vol4, vol5, vol6, vol7, vol8, vol9];
 // const volData = [ volAlbum1 ];
 
 export default volData;

@@ -10,15 +10,15 @@ import FullPlayer from './FullPlayer';
 import style from '../../theme';
 
 const Player = () => {
-	const [ fullScreen, setFullScreen ] = useState(false);
+	const [fullScreen, setFullScreen] = useState(false);
 	const loaded = useRef();
 	const audioRef = useRef();
 	const { playing, playList, defaultList, mode, currentIdx, currentSong } = useSelector((state) => state.player);
 	const { boxAlbumsList, boxAlbumsId, palette } = useSelector((state) => state.box);
 	const dispatch = useDispatch();
 
-	const [ currentTime, setCurrentTime ] = useState(0);
-	const [ duration, setDuration ] = useState(0);
+	const [currentTime, setCurrentTime] = useState(0);
+	const [duration, setDuration] = useState(0);
 	const percent = currentTime / duration;
 
 	// 控制播放暂停
@@ -30,7 +30,7 @@ const Player = () => {
 				audioRef.current.pause();
 			}
 		},
-		[ playing ]
+		[playing]
 	);
 
 	const prevAlbum = () => {
@@ -122,6 +122,14 @@ const Player = () => {
 	};
 
 	const preSong = usePrevious(currentSong);
+
+	useEffect(() => {
+		const fix = function () {
+			audioRef.current.play();
+		};
+		document.addEventListener('touchstart', fix, false);
+		return document.addEventListener('touchstart', fix, false);
+	}, [])
 	// 当click了prev next后更新歌曲src
 	useEffect(
 		// eslint-disable-next-line consistent-return
@@ -153,7 +161,7 @@ const Player = () => {
 
 			setDuration((current.dt / 1000) | 0);
 		},
-		[ playList, currentIdx ]
+		[playList, currentIdx]
 	);
 
 	const updateCurrentTime = (e) => {
@@ -218,55 +226,55 @@ const Player = () => {
 
 	return (
 		<React.Fragment>
-			<audio ref={audioRef} onTimeUpdate={updateCurrentTime} onEnded={onPlayEnd} onError={onErr} />
-			{fullScreen ? (
+			<audio ref={ audioRef } onTimeUpdate={ updateCurrentTime } onEnded={ onPlayEnd } onError={ onErr } />
+			{ fullScreen ? (
 				<FullPlayer
 					themeColor={
 						!_.isEmpty(currentSong) && palette[currentSong.al.id] ? (
 							palette[currentSong.al.id].dark
 						) : (
-							style.bgColorDark
-						)
+								style.bgColorDark
+							)
 					}
-					playing={playing}
-					playList={playList}
-					changePlaylist={changePlaylist}
-					mode={mode}
-					currentIdx={currentIdx}
-					currentSong={currentSong}
-					boxAlbumsList={boxAlbumsList}
-					boxAlbumsId={boxAlbumsId}
-					currentTime={currentTime}
-					duration={duration}
-					percent={percent}
-					togglePlay={togglePlay}
-					prevAlbum={prevAlbum}
-					nextAlbum={nextAlbum}
-					playRepeat={playRepeat}
-					playPrev={playPrev}
-					playNext={playNext}
-					onPrecentChange={onPrecentChange}
-					shuffleMode={shuffleMode}
-					zenMode={zenMode}
-					loopMode={loopMode}
-					repeatMode={repeatMode}
-					toggleFullScreen={toggleFullScreen}
+					playing={ playing }
+					playList={ playList }
+					changePlaylist={ changePlaylist }
+					mode={ mode }
+					currentIdx={ currentIdx }
+					currentSong={ currentSong }
+					boxAlbumsList={ boxAlbumsList }
+					boxAlbumsId={ boxAlbumsId }
+					currentTime={ currentTime }
+					duration={ duration }
+					percent={ percent }
+					togglePlay={ togglePlay }
+					prevAlbum={ prevAlbum }
+					nextAlbum={ nextAlbum }
+					playRepeat={ playRepeat }
+					playPrev={ playPrev }
+					playNext={ playNext }
+					onPrecentChange={ onPrecentChange }
+					shuffleMode={ shuffleMode }
+					zenMode={ zenMode }
+					loopMode={ loopMode }
+					repeatMode={ repeatMode }
+					toggleFullScreen={ toggleFullScreen }
 				/>
 			) : (
-				<MiniPlayer
-					playing={playing}
-					currentIdx={currentIdx}
-					currentSong={currentSong}
-					boxAlbumsList={boxAlbumsList}
-					boxAlbumsId={boxAlbumsId}
-					currentTime={currentTime}
-					duration={duration}
-					percent={percent}
-					togglePlay={togglePlay}
-					onPrecentChange={onPrecentChange}
-					toggleFullScreen={toggleFullScreen}
-				/>
-			)}
+					<MiniPlayer
+						playing={ playing }
+						currentIdx={ currentIdx }
+						currentSong={ currentSong }
+						boxAlbumsList={ boxAlbumsList }
+						boxAlbumsId={ boxAlbumsId }
+						currentTime={ currentTime }
+						duration={ duration }
+						percent={ percent }
+						togglePlay={ togglePlay }
+						onPrecentChange={ onPrecentChange }
+						toggleFullScreen={ toggleFullScreen }
+					/>
+				) }
 		</React.Fragment>
 	);
 };

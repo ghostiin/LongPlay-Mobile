@@ -15,61 +15,58 @@ const VolCard = (props) => {
 		<Card>
 			<div>
 				<CoverImg>
-					<img src={`${imgUrl}?param=400x400`} alt='cover' />
+					<img src={ `${imgUrl}?param=400x400` } alt='cover' />
 				</CoverImg>
 				<CardInfo>
-					<div className='category'>{cardCatgory}</div>
-					<Marquee className='name' style={{ fontSize: '30px', fontWeight: '600' }}>
-						{cardName}
-					</Marquee>
-
+					<div className='category'>{ cardCatgory }</div>
+					{ cardName }
 					<div className='singer'>
 						<span>By</span>
-						{singerName}
+						{ singerName }
 					</div>
 				</CardInfo>
 			</div>
 			<div>
 				<CardInfoHeader>
-					<img src={`${imgUrl}?param=400x400`} alt='cover' className='cover' />
+					<img src={ `${imgUrl}?param=400x400` } alt='cover' className='cover' />
 
 					<div className='right'>
 						<div className='right-inner'>
-							<div className='category'>{cardCatgory}</div>
-							<Marquee className='name' style={{ fontSize: '20px', fontWeight: '600' }}>
-								{cardName}
-							</Marquee>
+							<div className='category'>{ cardCatgory }</div>
+							<div className='name'>
+								{ cardName }
+							</div>
 							<div className='singer'>
 								<span>By</span>
-								{singerName}
+								{ singerName }
 							</div>
 						</div>
 					</div>
 				</CardInfoHeader>
 				<CardDescription>
 					<div className='content'>
-						<div className='text'>{description}</div>
+						<div className='text'>{ description }</div>
 					</div>
 				</CardDescription>
 				<CardAction>
-					<div onClick={(e) => e.stopPropagation()} aria-hidden className='card-btn'>
-						<Button onPropsClick={playNow} aria-hidden>
+					<div onClick={ (e) => e.stopPropagation() } aria-hidden className='card-btn'>
+						<Button onPropsClick={ playNow } aria-hidden>
 							<i className='iconfont'>&#xe9f9;</i>
-							Play Now
+							Play
 						</Button>
 					</div>
-					<div onClick={(e) => e.stopPropagation()} aria-hidden className='card-btn'>
-						{collected ? (
-							<Button outlined outlinedColor={style.mainColor}>
+					<div onClick={ (e) => e.stopPropagation() } aria-hidden className='card-btn'>
+						{ collected ? (
+							<Button outlined outlinedColor={ style.mainColor }>
 								<i className='iconfont'>&#xe618;</i>
 								In Box!
 							</Button>
 						) : (
-							<Button onPropsClick={collect} outlined outlinedColor={style.mainColor}>
-								<i className='iconfont'>&#xe69f;</i>
+								<Button onPropsClick={ collect } outlined outlinedColor={ style.mainColor }>
+									<i className='iconfont'>&#xe69f;</i>
 								Collect
-							</Button>
-						)}
+								</Button>
+							) }
 					</div>
 				</CardAction>
 			</div>

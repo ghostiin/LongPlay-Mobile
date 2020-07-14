@@ -18,11 +18,12 @@ const PlayerWrapper = styled.div`
 	.info {
 		display: flex;
 		flex-direction: row;
-
+		${style.noWrap};
 		&-right {
 			padding-left: 10px;
 			padding-top: 10px;
 			line-height: 20px;
+			${style.noWrap};
 		}
 	}
 

@@ -6,15 +6,15 @@ const Wrapper = styled.div`
 	color: ${style.textColor};
 	font-family: ${style.sansFont};
 	width: ${({ width }) => width || '50rem'};
-	height: 37.5rem;
-	/* url(${({ bgImg }) => bgImg}) */
+	height:80vh;
+	
 	background-image: linear-gradient(rgba(73, 51, 126,0.8), rgba(73, 51, 126,0.8)),  
 					  url(${({ bgImg }) => bgImg}), url(${default200});
 	background-repeat:no-repeat;
 	background-position: right;
 	background-size: 37.5rem;
 	background-color: ${style.darkColor};
-	border-radius: 2rem;
+	border-radius: 20px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -28,11 +28,11 @@ const AlbumInfo = styled.div`
 	text-align: right;
 
 	.cover {
-		width: 100px;
-		height: 100px;
+		width: 80px;
+		height: 80px;
 		margin-right: 10px;
 		img {
-			width: 100px;
+			width: 80px;
 			box-shadow: ${style.boxShadow};
 			border-radius: 4px;
 		}
@@ -43,6 +43,7 @@ const AlbumInfo = styled.div`
 		font-weight: 500;
 	}
 	.name {
+		${style.moreWrap};
 		font-weight: 600;
 		font-size: 16px;
 	}

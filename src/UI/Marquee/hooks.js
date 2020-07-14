@@ -7,7 +7,7 @@ import { nothing } from 'immer'; // nothing === undefined
 const useAnimationPlayState = () => {
 	const textWrapper = useRef(null);
 	// const [ animationPlayState, setAnimationPlayState ] = useState(undefined);
-	const [ animationPlayState, setAnimationPlayState ] = useImmer(nothing);
+	const [animationPlayState, setAnimationPlayState] = useImmer(nothing);
 	useEffect(() => {
 		const mouseOutHandler = () => {
 			setAnimationPlayState((draft) => {
@@ -33,7 +33,7 @@ const useAnimationPlayState = () => {
 const useAnimationDuration = (speed) => {
 	const textElem = useRef(null);
 	const calcElem = useRef(null);
-	const [ animationDuration, setAnimationDuration ] = useImmer(nothing);
+	const [animationDuration, setAnimationDuration] = useImmer(nothing);
 	const dynamicX = useRef(0);
 
 	useEffect(
@@ -43,7 +43,7 @@ const useAnimationDuration = (speed) => {
 				// 只有当textElem大于外部组件Wrapper的宽度时才发生滚动
 				if (textElem.current.clientWidth > calcElem.current.clientWidth) {
 					const textElemWidth = textElem.current.clientWidth;
-					const width = textElemWidth + 40;
+					const width = textElemWidth + 20;
 					dynamicX.current = `-${width}px`; // dynamicMarqueeAnimation的 DYNAMIC_VALUE值
 					setAnimationDuration((draft) => {
 						return `${width * 20 / marqueeSpeed}ms`;
@@ -61,7 +61,7 @@ const useAnimationDuration = (speed) => {
 				window.removeEventListener('resize', marqueeRun);
 			};
 		},
-		[ speed, setAnimationDuration ]
+		[speed, setAnimationDuration]
 	);
 
 	return { textElem, calcElem, dynamicX, animationDuration };

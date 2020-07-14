@@ -8,7 +8,7 @@ const Wrapper = styled.div`
 	font-family: ${style.sansFont};
 	color: ${style.textColor};
 	position: fixed;
-	top: 103px;
+	top: 91px;
 	bottom: 60px;
 	width: 100%;
 `;

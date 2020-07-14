@@ -12,8 +12,8 @@ const CoverImg = styled.div`
 `;
 const CardInfo = styled.div`
 	
-	margin:10px;
-	line-height: 25px;
+	margin:5px 10px;
+	line-height: 20px;
 
 	.category {
 		color: ${style.subColor};
@@ -22,7 +22,7 @@ const CardInfo = styled.div`
 	}
 	.name {
 		font-weight: 600;
-		font-size: 20px;
+		font-size: 16px;
 		
 	}
 	.singer {
@@ -32,26 +32,14 @@ const CardInfo = styled.div`
 		}
 	}
 
-	/* small props
-	img {
-		width: 6rem;
-		height: 6rem;
-		box-shadow: ${style.boxShadow};
-		border-radius: 0.5rem;
-	}
-	.right {
-		flex: 1;
-		width: 12rem;
 	
-		margin-left: 1rem;
-	} */
 `;
 const CardInfoHeader = styled.div`
 	padding: 10px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	line-height: 30px;
+	line-height:16px;
 	.cover {
 		width: 27vw;
 		height: 27vw;
@@ -60,10 +48,9 @@ const CardInfoHeader = styled.div`
 
 	.right {
 		margin-left: 10px;
+		flex:1;
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
-		align-items: center;
 		text-align: left;
 
 		&-inner {
@@ -77,7 +64,7 @@ const CardInfoHeader = styled.div`
 	}
 	.name {
 		font-weight: 600;
-		font-size: 20px;
+		font-size: 16px;
 	}
 	.singer {
 		span {

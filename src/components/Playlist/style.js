@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 `;
 
 const ScrollWrapper = styled.div`
-	height: 60vh;
+	height: 50vh;
 	overflow: hidden;
 `;
 

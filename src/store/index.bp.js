@@ -10,7 +10,7 @@ const composeEnhancers = compose;
 const persistConfig = {
 	key: 'root',
 	storage,
-	whitelist: [ 'box', 'player' ]
+	whitelist: ['box']
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

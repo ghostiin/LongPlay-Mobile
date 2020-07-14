@@ -26,7 +26,7 @@ const TextElem = styled.div`
 	display: inline-box;
 	/* margin-right值与计算动画translateX时加上的gap相等 */
 	/* 防止突然闪现，平滑过渡到尾巴的开头 */
-	margin-right: 40px;
+	margin-right: 20px;
 	box-sizing: border-box;
 `;
 

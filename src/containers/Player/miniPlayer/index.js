@@ -33,9 +33,9 @@ const MiniPlayer = ({
 	};
 
 	return (
-		<PlayerWrapper onClick={toggleFullScreen}>
+		<PlayerWrapper onClick={ toggleFullScreen }>
 			<ProgressBarWrapper>
-				<ProgressBar percent={percent} changePercent={onPrecentChange} bgStyle={style.mainColor} />
+				<ProgressBar percent={ percent } changePercent={ onPrecentChange } bgStyle={ style.mainColor } />
 			</ProgressBarWrapper>
 			<div className='info'>
 				<div className='cover'>
@@ -44,8 +44,8 @@ const MiniPlayer = ({
 							!_.isEmpty(currentSong) && currentSong.al ? (
 								`${currentSong.al.picUrl}?param=310x310`
 							) : (
-								default80
-							)
+									default80
+								)
 						}
 						alt='cover'
 						width='60'
@@ -54,23 +54,25 @@ const MiniPlayer = ({
 				</div>
 				<div className='info-right'>
 					<div>
-						{!_.isEmpty(currentSong) && currentSong.name ? currentSong.name : 'Good Music To Bad Days'}
+						<Marquee style={ { width: '60vw' } }>
+							{ !_.isEmpty(currentSong) && currentSong.name ? currentSong.name : 'Good Music To Bad Days' }
+						</Marquee>
 					</div>
-					<div style={{ color: style.subColor }}>
-						{!_.isEmpty(currentSong) && currentSong.ar ? getAllAr(currentSong.ar) : 'Play now'}
+					<div style={ { color: style.subColor } }>
+						{ !_.isEmpty(currentSong) && currentSong.ar ? getAllAr(currentSong.ar) : 'Play now' }
 					</div>
 				</div>
 			</div>
-			<div className='control' onClick={(e) => e.stopPropagation()} aria-hidden>
-				{playing ? (
-					<i className='iconfont pause' onClick={togglePlay} aria-hidden>
+			<div className='control' onClick={ (e) => e.stopPropagation() } aria-hidden>
+				{ playing ? (
+					<i className='iconfont pause' onClick={ togglePlay } aria-hidden>
 						&#xe6a6;
 					</i>
 				) : (
-					<i className='iconfont play' onClick={togglePlay} aria-hidden>
-						&#xe9f9;
-					</i>
-				)}
+						<i className='iconfont play' onClick={ togglePlay } aria-hidden>
+							&#xe9f9;
+						</i>
+					) }
 			</div>
 		</PlayerWrapper>
 	);

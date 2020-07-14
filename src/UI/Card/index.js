@@ -10,23 +10,27 @@ import CardWrapper from './style';
 
 const Card = (props) => {
 	const { children } = props;
-	const cardRef = useRef();
-
+	const frontRef = useRef();
+	const backRef = useRef();
 	const filpCard = () => {
-		cardRef.current.classList.toggle('is-fliped');
+		frontRef.current.classList.toggle('is-fliped-front');
+		backRef.current.classList.toggle('is-fliped-back');
 	};
 	return (
 		<CardWrapper>
-			<div className='card' ref={cardRef} onClick={filpCard} aria-hidden>
-				<div className='card-side card-side-front'>{children[0]}</div>
-				<div className='card-side card-side-back'>{children[1]}</div>
-			</div>
+			<div className='card-side card-side-front' ref={ frontRef }
+				onClick={ filpCard } aria-hidden
+			>{ children[0] }</div>
+			<div className='card-side card-side-back is-fliped-back' ref={ backRef }
+				onClick={ filpCard } aria-hidden
+			>{ children[1] }</div>
+
 		</CardWrapper>
 	);
 };
 
 Card.propTypes = {
-	children: PropTypes.oneOfType([ PropTypes.arrayOf(PropTypes.node), PropTypes.node ]).isRequired
+	children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired
 };
 
 export default Card;

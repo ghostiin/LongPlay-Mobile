@@ -48,6 +48,7 @@ const GridItem = styled.div`
 		padding-left: 10px;
 		line-height: 25px;
 		flex: 1;
+		${style.noWrap};
 	}
 	.iconfont {
 		font-size: 30px;

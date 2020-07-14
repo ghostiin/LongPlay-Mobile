@@ -23,19 +23,19 @@ const Playbox = () => {
 			const item = list[id].album;
 
 			return (
-				<GridItem key={id}>
-					<div className='cover' onClick={() => playNow(id)} aria-hidden>
-						<img src={`${item.picUrl}?param=310x310`} alt={item.name} width='80' height='80' />
+				<GridItem key={ id }>
+					<div className='cover' onClick={ () => playNow(id) } aria-hidden>
+						<img src={ `${item.picUrl}?param=310x310` } alt={ item.name } width='80' height='80' />
 					</div>
-					<div className='right'>
-						<p>{item.name}</p>
+					<div className='right' onClick={ () => playNow(id) } aria-hidden>
+						<p>{ item.name }</p>
 						<p>
 							<span>By </span>
-							{item.artist.name}
+							{ item.artist.name }
 						</p>
 					</div>
 					<div>
-						<i className='iconfont' onClick={() => removeItem(id)} aria-hidden>
+						<i className='iconfont' onClick={ () => removeItem(id) } aria-hidden>
 							&#xe699;
 						</i>
 					</div>
@@ -50,12 +50,12 @@ const Playbox = () => {
 		<Wrapper>
 			<div className='header'>
 				<div>PlayBox</div>
-				<div className='iconfont' onClick={back} aria-hidden>
+				<div className='iconfont' onClick={ back } aria-hidden>
 					&#xe69e;
 				</div>
 			</div>
 			<Scroll>
-				<Content>{renderList(boxAlbumsId, boxAlbumsList)}</Content>
+				<Content>{ renderList(boxAlbumsId, boxAlbumsList) }</Content>
 			</Scroll>
 		</Wrapper>
 	);
