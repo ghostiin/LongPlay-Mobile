@@ -3,17 +3,19 @@ import style from '../../theme';
 
 const Wrapper = styled.div`
 	color: ${style.textColor};
-	background-color: ${style.darkColor};
-	z-index: 101;
+	background-color: rgba(24, 20, 26, 0.9);
+
+	z-index: 201;
+	position: fixed;
+	bottom: 0;
 	width: 100%;
-	height: 100%;
-	border-radius: 1.5rem;
+	border-radius: 20px 20px 0 0;
 	overflow: hidden;
 	font-family: ${style.sansFont};
 `;
 
 const ScrollWrapper = styled.div`
-	height: 70%;
+	height: 60vh;
 	overflow: hidden;
 `;
 
@@ -50,9 +52,10 @@ const Item = styled.div`
 
 const Header = styled.div`
 	height: 30%;
-	border-radius: 1.5rem 1.5rem 0 0;
-	background-color: rgba(15, 12, 16, 1);
-	padding: 1.5rem;
+	border-radius: 20px 20px 0 0;
+	background-color: ${style.darkColor};
+	padding: 15px;
+	opacity: 1;
 
 	.info {
 		display: flex;
@@ -61,8 +64,10 @@ const Header = styled.div`
 		}
 
 		&-right {
-			padding-left: 1rem;
-			text-align: right;
+			text-align: left;
+			padding-left: 10px;
+			flex: 1;
+			line-height: 30px;
 
 			.sub {
 				/* color: rgba(152, 152, 152, 1); */
@@ -74,6 +79,10 @@ const Header = styled.div`
 				font-size: 1.2rem;
 				font-weight: 500;
 			}
+		}
+
+		.iconfont {
+			font-size: 30px;
 		}
 	}
 

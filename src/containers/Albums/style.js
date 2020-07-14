@@ -2,21 +2,23 @@ import styled from 'styled-components/macro';
 import style from '../../theme';
 
 const Wrapper = styled.div`
-	width: 100%;
 	display: flex;
-	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-
-	color: ${style.textColor};
 	font-family: ${style.sansFont};
+	color: ${style.textColor};
+	position: fixed;
+	top: 103px;
+	bottom: 60px;
+	width: 100%;
 `;
 
 const Caption = styled.div`
-	font-size: 1.5rem;
+	font-size: 16px;
 	font-weight: 300;
 	position: relative;
 	width: 100%;
+	margin-top: 20px;
 	text-align: center;
 	&::after {
 		content: "";
@@ -30,73 +32,37 @@ const Caption = styled.div`
 	}
 `;
 
-const GridContainer = styled.div`
-	/* itemNum*itemWidth+(itemNum-1)*gapWidth */
-	width: 100%;
-	/* to-do:responsively change padding */
-	padding: 3rem ${({ Tablet }) => (Tablet ? '5rem' : '10rem')};
-	display: grid;
-
-	grid-template-rows: repeat(auto-fit, minmax(${({ Tablet }) => (Tablet ? '16rem' : '19rem')}, min-content));
-	grid-template-columns: repeat(auto-fill, ${({ Tablet }) => (Tablet ? '12rem' : '13rem')});
-
-	grid-column-gap: 1rem;
-
-	/* for implicit grids */
-	grid-auto-rows: ${({ Tablet }) => (Tablet ? '16rem' : '20rem')};
-
-	/* align-items: center;
-	justify-content: center; */
-	align-content: center;
-	justify-content: space-evenly;
-
-	margin-bottom: 12vh;
-`;
+const GridContainer = styled.div``;
 
 const GridItem = styled.div`
 	/* margin: 0 0.5rem; */
 	position: relative;
+	height: 80px;
+	display: flex;
 
+	justify-content: space-between;
+
+	margin: 10px 20px;
 	.cover {
-		width: 100%;
+		width: 80px;
+		height: 80px;
 		overflow: hidden;
 
-		/* img {
+		img {
 			margin: 0;
 			padding: 0;
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
-		} */
-	}
-
-	.msk {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		padding-bottom: 100%;
-		height: 0;
-		opacity: 0;
-		background-color: rgba(0, 0, 0, .5);
-		transition: all .2s;
-		text-align: center;
-
-		i {
-			font-size: 3rem;
-			margin: 0 0.5rem;
-			cursor: pointer;
-
-			display: inline-block;
-			transform: translateY(150%);
-		}
-
-		&:hover {
-			opacity: 1;
 		}
 	}
-	a:hover {
-		text-decoration: underline;
+
+	.info {
+		flex: 1;
+		padding-left: 5px;
+		text-align: left;
+		line-height: 30px;
+		${style.noWrap};
 	}
 
 	p {
@@ -106,67 +72,29 @@ const GridItem = styled.div`
 			color: ${style.subColor};
 		}
 	}
-`;
 
-const Logo = styled.div`
-	font-family: ${style.logoFont};
-	font-size: 2rem;
-	span {
-		margin-right: 1.5rem;
-	}
-`;
+	.control {
+		vertical-align: middle;
+		display: flex;
+		justify-content: space-between;
 
-const NavBar = styled.div`
-	text-align: center;
-	color: ${style.textColor};
-	font-size: 1rem;
-	font-family: ${style.sansFont};
-	a {
-		text-decoration: none;
-		color: ${style.textColor};
-		opacity: 0.5;
-	}
-
-	.selected {
-		position: relative;
-		opacity: 1;
-		font-size: 1.5rem;
-		transition: all .4s;
-		&:after {
-			content: '♫';
-			font-size: 1rem;
-			color: ${style.textColor};
-			position: absolute;
-			top: 120%;
-			left: 50%;
-			transform: translateX(-50%);
+		.iconfont {
+			font-size: 30px;
+			line-height: 80px;
 		}
 	}
 `;
 
-const NavItem = styled.div`
-	display: inline-block;
-	position: relative;
-	margin-right: 4rem;
-
-	&:not(:last-child):after {
-		content: "";
-		background-color: ${style.textColor};
-		position: absolute;
-		width: 3rem;
-		height: 1px;
-		left: 125%;
-		top: 50%;
-	}
-`;
-
-const BackTop = styled.div`
-	position: fixed;
-	right: 2rem;
-	bottom: 2rem;
-	cursor: pointer;
-`;
-
 const SearchBox = styled.div`text-align: center;`;
 
-export { Wrapper, GridContainer, GridItem, Caption, SearchBox, Logo, NavBar, NavItem, BackTop };
+const ScrollWrapper = styled.div`height: 100vh;`;
+
+const Center = styled.div`
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+	align-items: center;
+	justify-content: center;
+`;
+
+export { Wrapper, GridContainer, GridItem, Caption, SearchBox, ScrollWrapper, Center };

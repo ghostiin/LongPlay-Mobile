@@ -1,14 +1,13 @@
 import React, { useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { actions as boxActionTypes } from '../../../components/Playbox/store';
+import { actions as boxActionTypes } from '../../Playbox/store';
 import { actions as playerActionTypes } from '../../Player/store';
 import * as actionTypes from '../store/action';
 import Modal from '../../../UI/Modal';
 import Scroll from '../../../UI/Scroll';
 import SolarSystemLoading from '../../../UI/SolarSystemLoading';
-import Media from '../../../components/MediaQueries';
-import { Wrapper, AlbumInfo, SongInfo, Content } from './style';
+import { Wrapper, AlbumInfo, SongInfo, Content, Header } from './style';
 import default200 from './default200.svg';
 
 const AlbumDetail = ({ history }) => {
@@ -41,39 +40,40 @@ const AlbumDetail = ({ history }) => {
 		return (
 			<AlbumInfo>
 				<div className='cover'>
-					<img src={`${album.picUrl}?param=310x310`} alt={album.name} />
+					<img src={`${album.picUrl}?param=310x310`} alt={album.name} width='100' height='100' />
 				</div>
-				<div className='category'>Album</div>
-				<div className='name'> {album.name}</div>
-				<div className='singer'>
-					<span>By </span>
-					{album.artist.name}
-				</div>
-				<div className='state'>
-					<i className='iconfont' aria-hidden onClick={() => dispatch(playerActionTypes.playNow(id))}>
-						&#xe6e2;
-					</i>
-					{show ? (
-						<i
-							className='iconfont'
-							onClick={() => {
-								dispatch(boxActionTypes.removeAlbumFromBox(id));
-							}}
-							aria-hidden='true'
-						>
-							&#xe9fe;
+				<div>
+					<div className='name'> {album.name}</div>
+					<div className='singer'>
+						<span>By </span>
+						{album.artist.name}
+					</div>
+					<div className='state'>
+						<i className='iconfont' aria-hidden onClick={() => dispatch(playerActionTypes.playNow(id))}>
+							&#xe9f9;
 						</i>
-					) : (
-						<i
-							className='iconfont'
-							onClick={() => {
-								dispatch(boxActionTypes.addAlbumToBox(id));
-							}}
-							aria-hidden='true'
-						>
-							&#xea00;
-						</i>
-					)}
+						{show ? (
+							<i
+								className='iconfont'
+								onClick={() => {
+									dispatch(boxActionTypes.removeAlbumFromBox(id));
+								}}
+								aria-hidden='true'
+							>
+								&#xe9fe;
+							</i>
+						) : (
+							<i
+								className='iconfont'
+								onClick={() => {
+									dispatch(boxActionTypes.addAlbumToBox(id));
+								}}
+								aria-hidden='true'
+							>
+								&#xea00;
+							</i>
+						)}
+					</div>
 				</div>
 			</AlbumInfo>
 		);
@@ -108,25 +108,27 @@ const AlbumDetail = ({ history }) => {
 			</SongInfo>
 		);
 	};
+	// 直接传递函数会每次生成不一样的引用导致memo比较结果始终不同
+	const handleBack = useCallback(() => {
+		history.goBack();
+	}, []);
 	// to-do ondismiss err
 	const renderCard = (width = '50rem') => {
 		return (
 			<Wrapper bgImg={album ? `${album.picUrl}?param=310x310` : default200} width={width}>
+				<Header>
+					<div className='sub'>Album Detail</div>
+					<div className='iconfont' aria-hidden onClick={handleBack}>
+						&#xe69e;
+					</div>
+				</Header>
 				{renderInfo()}
 				{renderSonglist()}
 			</Wrapper>
 		);
 	};
-	// 直接传递函数会每次生成不一样的引用导致memo比较结果始终不同
-	const handleBack = useCallback(() => {
-		history.goBack();
-	}, []);
-	return (
-		<Modal onDismiss={handleBack}>
-			<Media.Desktop>{renderCard()}</Media.Desktop>
-			<Media.Tablet>{renderCard('45rem')}</Media.Tablet>
-		</Modal>
-	);
+
+	return <Modal onDismiss={handleBack}>{renderCard('90vw')}</Modal>;
 };
 
 AlbumDetail.propTypes = {

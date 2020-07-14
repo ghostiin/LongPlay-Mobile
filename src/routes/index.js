@@ -7,7 +7,7 @@ import About from '../containers/About';
 
 const AlbumsComponent = lazy(() => import('../containers/Albums'));
 const AlbumDetailComponent = lazy(() => import('../containers/Albums/AlbumDetail'));
-const ZenComponent = lazy(() => import('../containers/Zen'));
+const PlayboxComponent = lazy(() => import('../containers/Playbox'));
 
 const SuspenseComponent = (Component) => (props) => {
 	return (
@@ -19,13 +19,12 @@ const SuspenseComponent = (Component) => (props) => {
 
 export default [
 	{
-		path: '/zen',
-		component: SuspenseComponent(ZenComponent)
-	},
-
-	{
 		component: Home, // 公共组件home
 		routes: [
+			{
+				path: '/playbox',
+				component: SuspenseComponent(PlayboxComponent)
+			},
 			{
 				path: '/about',
 				component: About

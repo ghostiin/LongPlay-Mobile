@@ -1,5 +1,6 @@
 import React from 'react';
-import { Header as HeaderWrapper, Logo } from './style';
+import { Link } from 'react-router-dom';
+import { Header as HeaderWrapper } from './style';
 import logo from './logo.svg';
 
 const Header = () => {
@@ -9,7 +10,9 @@ const Header = () => {
 				<img src={logo} alt='logo' />
 			</span>
 			<span className='logo-title'>LONG PLAY</span>
-			<span className='iconfont playbox'>&#xe633;</span>
+			<span className='iconfont playbox'>
+				<Link to='/playbox'>&#xe633;</Link>
+			</span>
 		</HeaderWrapper>
 	);
 };

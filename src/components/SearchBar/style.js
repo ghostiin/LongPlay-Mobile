@@ -10,10 +10,10 @@ const InputWrapper = styled.div`
 		color: ${style.textColor};
 		outline-style: none;
 		border: 0;
-		border-radius: 5rem;
-		width: 30rem;
-		height: 2rem;
-		padding: 1rem 2rem;
+		border-radius: 20px;
+		width: 80vw;
+		height: 18px;
+		padding: 5px;
 		background-color: ${({ bgColor }) => bgColor || 'rgba(88, 71, 126, .5)'};
 		text-align: center;
 		&::-webkit-input-placeholder {
@@ -34,7 +34,7 @@ const InputWrapper = styled.div`
 		top: 50%;
 		right: 50%;
 		/* translateX half of search input width -1rem */
-		transform: translateX(14rem);
+		transform: translateX(40vw);
 		cursor: pointer;
 	}
 `;

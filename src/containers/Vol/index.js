@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import VolCard from '../../components/VolCard';
 import Scroll from '../../UI/Scroll';
 import { actions as playActionTypes } from '../Player/store';
-import { actions as boxActionTypes } from '../../components/Playbox/store';
+import { actions as boxActionTypes } from '../Playbox/store';
 import { Wrapper, Content, Item } from './style';
 import volData from '../../api/mockData';
 

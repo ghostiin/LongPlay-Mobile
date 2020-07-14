@@ -3,26 +3,24 @@ import React, { useRef, useState, useEffect } from 'react';
 import _ from 'lodash';
 import { useSelector, useDispatch } from 'react-redux';
 import { actions as actionTypes } from './store';
-import Marquee from '../../UI/Marquee';
-import ProgressBar from '../../components/ProgressBar';
-import Playbox from '../../components/Playbox';
-import Playlist from '../../components/Playlist';
-import { useFormatTime, usePrevious } from '../../hooks';
+import { usePrevious } from '../../hooks';
 import { getSongUrl } from '../../api/requests';
-import { PlayerWrapper, PlayerBar, PlayControl, ProgressBarWrapper } from './style';
-import style from '../../theme';
 import MiniPlayer from './miniPlayer';
+import FullPlayer from './FullPlayer';
+import style from '../../theme';
 
 const Player = () => {
+	const [ fullScreen, setFullScreen ] = useState(false);
 	const loaded = useRef();
 	const audioRef = useRef();
 	const { playing, playList, defaultList, mode, currentIdx, currentSong } = useSelector((state) => state.player);
-	const { boxAlbumsList, boxAlbumsId } = useSelector((state) => state.box);
+	const { boxAlbumsList, boxAlbumsId, palette } = useSelector((state) => state.box);
 	const dispatch = useDispatch();
 
 	const [ currentTime, setCurrentTime ] = useState(0);
 	const [ duration, setDuration ] = useState(0);
 	const percent = currentTime / duration;
+
 	// 控制播放暂停
 	useEffect(
 		() => {
@@ -35,15 +33,6 @@ const Player = () => {
 		[ playing ]
 	);
 
-	const getAllAr = (ar) => {
-		let all = '';
-		const len = ar.length;
-		// eslint-disable-next-line array-callback-return
-		ar.map((e, id) => {
-			all += id + 1 !== len ? `${e.name} , ` : e.name;
-		});
-		return all;
-	};
 	const prevAlbum = () => {
 		if (_.isEmpty(currentSong)) return;
 		if (currentSong.al.id in boxAlbumsList) {
@@ -56,7 +45,6 @@ const Player = () => {
 				idx -= 1;
 			}
 			dispatch(actionTypes.playNow(boxAlbumsId[idx]));
-			// dispatch(actionTypes.setPlaylist(songlist));
 		} else {
 			dispatch(actionTypes.playNow(boxAlbumsId[0]));
 		}
@@ -208,21 +196,73 @@ const Player = () => {
 			dispatch(actionTypes.setPlayMode({ repeat: false, loop: true }));
 		}
 	};
+
+	const zenMode = () => {
+		if (!mode.zen) {
+			dispatch(actionTypes.setPlayMode({ zen: true, loop: false, repeat: false }));
+		} else {
+			dispatch(actionTypes.setPlayMode({ zen: false, loop: true }));
+		}
+	};
+
+	const changePlaylist = (id) => {
+		dispatch(actionTypes.setCurrentIdx(id));
+	};
+	const toggleFullScreen = () => {
+		setFullScreen(!fullScreen);
+	};
+
 	return (
 		<React.Fragment>
 			<audio ref={audioRef} onTimeUpdate={updateCurrentTime} onEnded={onPlayEnd} onError={onErr} />
-			<MiniPlayer
-				playing={playing}
-				currentIdx={currentIdx}
-				currentSong={currentSong}
-				boxAlbumsList={boxAlbumsList}
-				boxAlbumsId={boxAlbumsId}
-				currentTime={currentTime}
-				duration={duration}
-				percent={percent}
-				togglePlay={togglePlay}
-				onPrecentChange={onPrecentChange}
-			/>
+			{fullScreen ? (
+				<FullPlayer
+					themeColor={
+						!_.isEmpty(currentSong) && palette[currentSong.al.id] ? (
+							palette[currentSong.al.id].dark
+						) : (
+							style.bgColorDark
+						)
+					}
+					playing={playing}
+					playList={playList}
+					changePlaylist={changePlaylist}
+					mode={mode}
+					currentIdx={currentIdx}
+					currentSong={currentSong}
+					boxAlbumsList={boxAlbumsList}
+					boxAlbumsId={boxAlbumsId}
+					currentTime={currentTime}
+					duration={duration}
+					percent={percent}
+					togglePlay={togglePlay}
+					prevAlbum={prevAlbum}
+					nextAlbum={nextAlbum}
+					playRepeat={playRepeat}
+					playPrev={playPrev}
+					playNext={playNext}
+					onPrecentChange={onPrecentChange}
+					shuffleMode={shuffleMode}
+					zenMode={zenMode}
+					loopMode={loopMode}
+					repeatMode={repeatMode}
+					toggleFullScreen={toggleFullScreen}
+				/>
+			) : (
+				<MiniPlayer
+					playing={playing}
+					currentIdx={currentIdx}
+					currentSong={currentSong}
+					boxAlbumsList={boxAlbumsList}
+					boxAlbumsId={boxAlbumsId}
+					currentTime={currentTime}
+					duration={duration}
+					percent={percent}
+					togglePlay={togglePlay}
+					onPrecentChange={onPrecentChange}
+					toggleFullScreen={toggleFullScreen}
+				/>
+			)}
 		</React.Fragment>
 	);
 };

@@ -4,11 +4,20 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import Marquee from '../../../UI/Marquee';
 import ProgressBar from '../../../components/ProgressBar';
-import { useFormatTime } from '../../../hooks';
 import { PlayerWrapper, ProgressBarWrapper } from './style';
 import default80 from '../default80.svg';
+import style from '../../../theme';
 
-const MiniPlayer = ({ playing, currentIdx, currentSong, boxAlbumsId, percent, togglePlay, onPrecentChange }) => {
+const MiniPlayer = ({
+	playing,
+	currentIdx,
+	currentSong,
+	boxAlbumsId,
+	percent,
+	togglePlay,
+	onPrecentChange,
+	toggleFullScreen
+}) => {
 	// const { playing, playList, defaultList, mode, currentIdx, currentSong } = useSelector((state) => state.player);
 	// const { boxAlbumsList, boxAlbumsId } = useSelector((state) => state.box);
 	// const dispatch = useDispatch();
@@ -24,9 +33,9 @@ const MiniPlayer = ({ playing, currentIdx, currentSong, boxAlbumsId, percent, to
 	};
 
 	return (
-		<PlayerWrapper>
+		<PlayerWrapper onClick={toggleFullScreen}>
 			<ProgressBarWrapper>
-				<ProgressBar percent={percent} changePercent={onPrecentChange} />
+				<ProgressBar percent={percent} changePercent={onPrecentChange} bgStyle={style.mainColor} />
 			</ProgressBarWrapper>
 			<div className='info'>
 				<div className='cover'>
@@ -47,10 +56,12 @@ const MiniPlayer = ({ playing, currentIdx, currentSong, boxAlbumsId, percent, to
 					<div>
 						{!_.isEmpty(currentSong) && currentSong.name ? currentSong.name : 'Good Music To Bad Days'}
 					</div>
-					<div>{!_.isEmpty(currentSong) && currentSong.ar ? getAllAr(currentSong.ar) : 'Play now'}</div>
+					<div style={{ color: style.subColor }}>
+						{!_.isEmpty(currentSong) && currentSong.ar ? getAllAr(currentSong.ar) : 'Play now'}
+					</div>
 				</div>
 			</div>
-			<div className='control'>
+			<div className='control' onClick={(e) => e.stopPropagation()} aria-hidden>
 				{playing ? (
 					<i className='iconfont pause' onClick={togglePlay} aria-hidden>
 						&#xe6a6;
@@ -74,9 +85,11 @@ MiniPlayer.propTypes = {
 			id: PropTypes.number,
 			picUrl: PropTypes.string
 		}),
-		ar: PropTypes.shape({
-			name: PropTypes.string
-		}),
+		ar: PropTypes.arrayOf(
+			PropTypes.shape({
+				name: PropTypes.string
+			})
+		),
 		name: PropTypes.string
 	}).isRequired,
 

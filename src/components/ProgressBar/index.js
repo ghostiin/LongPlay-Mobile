@@ -6,7 +6,7 @@ import style from '../../theme';
 const Wrapper = styled.div`
 	height: 3px;
 	width: 100%;
-	background-color: ${style.mainColor};
+	background-color: ${style.subColor};
 	position: relative;
 
 	.innerbar {
@@ -32,7 +32,7 @@ const Wrapper = styled.div`
 	}
 `;
 
-const ProgressBar = ({ percent, changePercent }) => {
+const ProgressBar = ({ percent, changePercent, bgStyle }) => {
 	const progressbar = useRef();
 	const progress = useRef();
 	const btn = useRef();
@@ -68,7 +68,7 @@ const ProgressBar = ({ percent, changePercent }) => {
 	};
 	// to-do drag
 	return (
-		<Wrapper ref={progressbar} onClick={handleClick}>
+		<Wrapper ref={progressbar} onClick={handleClick} style={bgStyle ? { backgroundColor: bgStyle } : {}}>
 			<div className='innerbar' ref={progress} aria-hidden />
 			<div className='btn' ref={btn} aria-hidden />
 		</Wrapper>
@@ -77,7 +77,12 @@ const ProgressBar = ({ percent, changePercent }) => {
 
 ProgressBar.propTypes = {
 	percent: PropTypes.number.isRequired,
-	changePercent: PropTypes.func.isRequired
+	changePercent: PropTypes.func.isRequired,
+	bgStyle: PropTypes.string
+};
+
+ProgressBar.defaultProps = {
+	bgStyle: undefined
 };
 
 export default React.memo(ProgressBar);

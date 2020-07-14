@@ -6,6 +6,7 @@ const PlayerWrapper = styled.div`
 	height: 63px;
 	position: fixed;
 	bottom: 0;
+
 	background-color: ${style.darkColor};
 	color: ${style.textColor};
 	font-family: ${style.sansFont};
@@ -21,6 +22,7 @@ const PlayerWrapper = styled.div`
 		&-right {
 			padding-left: 10px;
 			padding-top: 10px;
+			line-height: 20px;
 		}
 	}
 

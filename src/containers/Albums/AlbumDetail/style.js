@@ -16,36 +16,35 @@ const Wrapper = styled.div`
 	background-color: ${style.darkColor};
 	border-radius: 2rem;
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: space-between;
 `;
 
 const AlbumInfo = styled.div`
-	flex: 1;
 	display: flex;
-	flex-direction: column;
-	align-items: left;
-	justify-content: center;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 20px;
+	text-align: right;
 
-	padding-left: 4rem;
 	.cover {
-		margin: 1rem;
-		width: 12.5rem;
-		height: 12.5rem;
-
+		width: 100px;
+		height: 100px;
+		margin-right: 10px;
 		img {
-			width: 100%;
+			width: 100px;
 			box-shadow: ${style.boxShadow};
+			border-radius: 4px;
 		}
 	}
-
+	line-height: 30px;
 	.category {
 		color: ${style.subColor};
 		font-weight: 500;
 	}
 	.name {
 		font-weight: 600;
-		font-size: 1.8rem;
+		font-size: 16px;
 	}
 	.singer {
 		${style.noWrap};
@@ -55,32 +54,32 @@ const AlbumInfo = styled.div`
 	}
 
 	.state {
-		margin: 1rem 0;
+		text-align: right;
 		i {
-			font-size: 2rem;
-			margin-right: 1rem;
-			cursor: pointer;
+			font-size: 30px;
+			line-height: 30px;
 		}
 	}
 `;
 
 const SongInfo = styled.div`
+	padding: 0 20px;
 	flex: 1;
 	display: flex;
 	flex-direction: column;
 	align-items: left;
 	justify-content: center;
-	padding-top: 3rem;
-	padding-right: 4rem;
+
 	overflow: hidden;
-	text-align: right;
+	text-align: left;
 	.info {
-		font-size: 2rem;
+		font-size: 20px;
+		padding-bottom: 10px;
 	}
 	span {
 		color: ${style.subColor};
 		font-weight: 600;
-		font-size: 1rem;
+		font-size: 16px;
 	}
 `;
 const Content = styled.div`
@@ -91,5 +90,27 @@ const Content = styled.div`
 	padding-bottom: 2rem;
 `;
 
+const Header = styled.div`
+	display: flex;
+	justify-content: space-between;
+	padding: 20px;
+	padding-bottom: 0;
+	font-weight: 700;
+	.sub {
+		color: ${style.subColor};
+	}
+
+	.iconfont {
+		font-size: 20px;
+	}
+`;
+
+const Center = styled.div`
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+	align-items: center;
+	justify-content: center;
+`;
 // eslint-disable-next-line import/prefer-default-export
-export { Wrapper, AlbumInfo, SongInfo, Content };
+export { Wrapper, AlbumInfo, SongInfo, Content, Header, Center };
