@@ -12,25 +12,26 @@ import volData from '../../api/mockData';
 function Vol({ volData }) {
 	const dispatch = useDispatch();
 	const { boxAlbumsList } = useSelector((state) => state.box);
-
+	const playNow = (id) => {
+		dispatch(playActionTypes.playNow(id));
+		// document.querySelector('audio').play();
+	}
 	const renderList = () => {
 		return volData.map((vol) => {
 			const { name: cardName, artist, volDescription: description, picUrl: imgUrl } = vol;
 			const { name: singerName } = artist;
 			return (
-				<Item key={vol.id}>
+				<Item key={ vol.id }>
 					<VolCard
-						playNow={() => {
-							dispatch(playActionTypes.playNow(vol.id));
-						}}
-						collect={() => {
+						playNow={ () => playNow(vol.id) }
+						collect={ () => {
 							dispatch(boxActionTypes.addAlbumToBox(vol.id));
-						}}
-						collected={!!boxAlbumsList[vol.id]}
-						cardName={cardName}
-						singerName={singerName}
-						description={description}
-						imgUrl={imgUrl}
+						} }
+						collected={ !!boxAlbumsList[vol.id] }
+						cardName={ cardName }
+						singerName={ singerName }
+						description={ description }
+						imgUrl={ imgUrl }
 					/>
 				</Item>
 			);
@@ -40,7 +41,7 @@ function Vol({ volData }) {
 	return (
 		<Wrapper>
 			<Scroll>
-				<Content>{renderList()}</Content>
+				<Content>{ renderList() }</Content>
 			</Scroll>
 		</Wrapper>
 	);

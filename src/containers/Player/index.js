@@ -127,8 +127,8 @@ const Player = () => {
 		const fix = function () {
 			audioRef.current.play();
 		};
-		document.addEventListener('touchstart', fix, false);
-		return document.addEventListener('touchstart', fix, false);
+		document.addEventListener('touchstart', fix, { once: false });
+		return document.addEventListener('touchstart', fix, { once: false });
 	}, [])
 	// 当click了prev next后更新歌曲src
 	useEffect(
