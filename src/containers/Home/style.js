@@ -19,7 +19,7 @@ const Header = styled.div`
 	font-size: 20px;
 	.logo-title {
 		font-family: ${style.logoFont};
-		font-size: 25px;
+		font-size: 16px;
 	}
 
 	& > span {
