@@ -63,5 +63,14 @@ const GridItem = styled.div`
 	}
 `;
 
+const Center = styled.div`
+	width:100vw;	
+	text-align:center;
+	color: ${style.subColor};
+	line-height:30px;
+	
+
+`
+
 // eslint-disable-next-line import/prefer-default-export
-export { Wrapper, GridItem, Content };
+export { Wrapper, GridItem, Content, Center };

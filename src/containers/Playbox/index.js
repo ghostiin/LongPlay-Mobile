@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { actions as boxActionTypes } from './store';
 import { actions as playerActionTypes } from '../Player/store';
 import Scroll from '../../UI/Scroll';
-import { Wrapper, GridItem, Content } from './style';
+import { Wrapper, GridItem, Content, Center } from './style';
 import history from '../../history';
 
 const Playbox = () => {
@@ -54,6 +54,29 @@ const Playbox = () => {
 					&#xe69e;
 				</div>
 			</div>
+			<Center>
+				{
+					boxAlbumsId.length ? null :
+						(<React.Fragment>
+
+							<div>
+								NO ALBUM IN BOX
+							</div>
+							<div>
+								♬---Tips---♬
+							</div>
+							<div>
+								当<i className="iconfont">&#xe6ed;</i>Zen Mode开启时，
+							</div>
+							<div>
+								会顺序循环播放playbox中的专辑。
+							</div>
+						</React.Fragment>
+
+						)
+
+				}
+			</Center>
 			<Scroll>
 				<Content>{ renderList(boxAlbumsId, boxAlbumsList) }</Content>
 			</Scroll>

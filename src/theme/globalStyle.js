@@ -53,7 +53,8 @@ html, body, div, span, applet, object, iframe,
 	}
     /* 自定义 */
     html,body{
-    background: linear-gradient(${style.bgColorLight}, ${style.bgColorDark}) no-repeat fixed;
+   
+    background-color: ${style.bgColorLight};
     scroll-behavior: smooth;
 	font-family: ${style.sansFont};
     }
