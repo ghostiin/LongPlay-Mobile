@@ -6,4 +6,4 @@
 
 [在线Demo](http://116.62.146.32:3002)
 
-![](../longplayv1/assets/LP-QR.png)
+![](assets\LP-QR.png)
